@@ -1,0 +1,19 @@
+{
+  "name": "telegram-deno-v2.3.2",
+  "version": "2.3.2",
+  "description": "Telegram Community & Operations Platform - STOS V2.3.2",
+  "tasks": {
+    "dev": "deno run --allow-all --allow-env --allow-net --allow-read --allow-write src/main.ts",
+    "start": "deno run --allow-env --allow-net --allow-read --allow-write src/main.ts",
+    "test": "deno test --allow-all",
+    "fmt": "deno fmt",
+    "lint": "deno lint"
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.208.0/"
+  },
+  "exports": {
+    "./connector": "./src/connectors/deno-connector.ts",
+    "./models": "./src/models/mod.ts"
+  }
+}
