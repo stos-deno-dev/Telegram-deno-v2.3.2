@@ -2,7 +2,7 @@
 // STOS V2.3.2 Deno Connector - Runtime Bridge
 // Implements full 13-step pipeline with atomic transactions
 
-import { EventEmitter } from "https://deno.land/std@0.208.0/events/mod.ts";
+import { EventEmitter } from "https://deno.land/std@0.208.0/node/events.ts";
 import type {
   Intent,
   ExecutionPlan,
