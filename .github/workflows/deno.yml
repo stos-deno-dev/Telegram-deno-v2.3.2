@@ -15,15 +15,15 @@ jobs:
 
     steps:
       - name: Setup repo
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332  # v4.1.7
+        uses: actions/checkout@v4  # v4.1.7
 
       - name: Setup Deno
-        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31  # v1.1.2
+        uses: denoland/setup-deno@v4  # v1.1.2
         with:
           deno-version: v2.x
 
       - name: Cache Deno dependencies
-        uses: actions/cache@a18cd7428679ccb53eeee44f582fe0ce4b38f1b7  # v4.1.2
+        uses: actions/cache@v4  # v4.1.2
         with:
           path: ~/.cache/deno
           key: deno-${{ hashFiles('**/deno.lock') }}
