@@ -1,0 +1,30 @@
+name: Deploy to Deno Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@909c0f971aeb68e6c81ab4b7a29bbe7e02c7bde5  # v2
+        with:
+          deno-version: v2.x
+
+      - name: Deploy to Deno Deploy
+        uses: denoland/deployctl@59e01b6edbc80b0f70a0a5e30aee43b1e979b098  # v1
+        with:
+          project: "swan-telegram-system"
+          entrypoint: "main.ts"   # ← change this to your main file
+          root: "."
