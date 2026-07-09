@@ -1,5 +1,4 @@
 
-```markdown
 # Telegram Deno v2.3.2
 
 A **Telegram Community & Operations Platform** built on Deno, designed around strict separation of concerns, deterministic state management, and transactional reliability.
