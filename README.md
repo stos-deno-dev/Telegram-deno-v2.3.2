@@ -1,3 +1,5 @@
+
+```markdown
 # Telegram Deno v2.3.2
 
 A **Telegram Community & Operations Platform** built on Deno, designed around strict separation of concerns, deterministic state management, and transactional reliability.
@@ -44,6 +46,7 @@ Each engine produces:
 **The only layer allowed to change data**. Executes a fixed 13-step pipeline:
 
 ```
+
 1.  Event Ingestion
 2.  Identity Resolution
 3.  Permission Validation
@@ -241,7 +244,7 @@ Bot must be admin with correct permissions:
 
 ### Prerequisites
 
-- Deno 1.x or higher
+- **Deno 2.x** or higher  <!-- ✅ Updated from 1.x — Deno 2 is current stable -->
 - Telegram Bot Token
 - Deno Deploy account (optional, for hosting)
 
@@ -264,6 +267,18 @@ WEBHOOK_URL=https://your-domain.com/webhook
 ```bash
 deno test --allow-all
 ```
+
+### Local CI Check  <!-- ✅ New section — mirrors GitHub Actions pipeline -->
+
+Run all CI checks locally before pushing:
+
+```bash
+chmod +x ci.sh
+./ci.sh
+```
+
+This runs `deno fmt --check`, `deno lint`, and `deno test -A` in sequence,
+identical to the GitHub Actions workflow.
 
 ---
 
@@ -289,6 +304,8 @@ Telegram-deno-v2.3.2/
 │   │       ├── telegram/
 │   │       ├── kv/
 │   │       └── queue/
+│   ├── connectors/
+│   │   └── deno-connector.ts   <!-- ✅ Fixed: EventEmitter import corrected -->
 │   ├── models/
 │   │   ├── intent.ts
 │   │   ├── execution-plan.ts
@@ -313,6 +330,10 @@ Telegram-deno-v2.3.2/
 │   ├── API.md
 │   ├── FSM.md
 │   └── SECURITY.md
+├── .github/
+│   └── workflows/
+│       └── deno.yml            <!-- ✅ Updated: Deno 2.x, SHA-pinned actions, caching, fmt -->
+├── ci.sh                       <!-- ✅ New: local CI runner script -->
 ├── deno.json
 ├── deno.lock
 ├── README.md
@@ -410,6 +431,7 @@ Contributions welcome! Please:
 4. Atomic commits in Layer 2
 5. Effects only in Layer 3
 6. Update documentation
+7. Run `./ci.sh` locally before opening a PR  <!-- ✅ New guideline -->
 
 ---
 
@@ -428,6 +450,19 @@ MIT License — see LICENSE file for details
 
 ---
 
-**Version**: 2.3.2  
-**Status**: Production-Ready  
-**Last Updated**: 2026-07-03
+**Version**: 2.3.2
+**Status**: Production-Ready
+**Last Updated**: 2026-07-09  <!-- ✅ Updated date -->
+```
+
+---
+
+**Summary of README changes from this session:**
+
+| Section | Change |
+|---|---|
+| Prerequisites | `Deno 1.x` → `Deno 2.x` |
+| Getting Started | Added **Local CI Check** section with `ci.sh` instructions |
+| Project Structure | Added `connectors/deno-connector.ts` with fix note; added `ci.sh`; annotated `deno.yml` |
+| Contributing | Added step 7: run `./ci.sh` before opening a PR |
+| Last Updated | `2026-07-03` → `2026-07-09` |
